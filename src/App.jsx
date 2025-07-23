@@ -1,12 +1,18 @@
-import SignUp from './Pages/Auth/SignUp'
+import { AuthContextProvider } from "./Contexts/AuthContextProvider";
+import AccountAccess from "./Pages/Auth/AccountAccess";
+import { BrowserRouter } from "react-router-dom";
+import AppRoutes from './Common/AppRoutes'
 
 function App() {
-
   return (
     <>
-      <SignUp/>
+      <BrowserRouter>
+        <AppRoutes/>
+        <AuthContextProvider>
+        </AuthContextProvider>
+      </BrowserRouter>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
