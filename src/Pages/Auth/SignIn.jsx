@@ -1,7 +1,9 @@
-import React,{useState} from "react";
+import React,{useContext, useState} from "react";
 import {API_URLS} from '../../API/URLs';
+import {AuthContext} from '../../Contexts/AuthContextProvider.jsx'
 
 export default function SignIn() {
+  const {setUserId,setUserFirstName} = useContext(AuthContext);
 
   const initialForm = {
     userId: "",
@@ -30,6 +32,8 @@ export default function SignIn() {
       if(data.Success)
       {
         console.log(data);
+        setUserId(data.userId);
+        setUserFirstName(data.name);
         localStorage.setItem("token", JSON.stringify(data.Token));
         //redirect to home page
       }

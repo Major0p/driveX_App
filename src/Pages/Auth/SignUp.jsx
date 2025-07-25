@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { API_URLS } from "../../API/URLs";
 import { Navigate } from "react-router-dom";
+import {AuthContext} from '../../Contexts/AuthContextProvider'
 
 export default function SignUp() {
-  
+  const {setUserId,setUserFirstName} = useContext(AuthContext);
+
   let initialForm = {
     firstName: "",
     lastName: "",
@@ -35,6 +37,8 @@ export default function SignUp() {
         console.log(data);
         //redirect to home page
         //Navigate('./Home');
+        setUserId(data.userId);
+        setUserFirstName(data.name);
         localStorage.setItem("token", JSON.stringify(data.Token));
       } else setForm(initialForm);
     } else setForm(initialForm);

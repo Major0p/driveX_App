@@ -1,16 +1,11 @@
-import { AuthContextProvider } from "./Contexts/AuthContextProvider";
-import AccountAccess from "./Pages/Auth/AccountAccess";
-import { BrowserRouter } from "react-router-dom";
-import AppRoutes from './Common/AppRoutes'
+import {Layout,AuthContextProvider} from './Common/JSX_Paths'
 
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <AppRoutes/>
         <AuthContextProvider>
+        <Layout/>
         </AuthContextProvider>
-      </BrowserRouter>
     </>
   );
 }

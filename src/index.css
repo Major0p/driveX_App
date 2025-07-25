@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+.drivex{
+     background: linear-gradient(to right, #2f0396, #1759e6, #44cdef); /* purple → pink → red */
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text; /* For Firefox */
+      color: transparent;
+}
