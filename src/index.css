@@ -7,3 +7,12 @@
       background-clip: text; /* For Firefox */
       color: transparent;
 }
+
+.dark-text{
+      color: white;
+}
+
+.dark-bg{
+      background-color: black;
+}
+

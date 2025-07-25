@@ -1,10 +1,12 @@
 import React, { useContext, useState } from "react";
 import { API_URLS } from "../../API/URLs";
-import { Navigate } from "react-router-dom";
-import {AuthContext} from '../../Contexts/AuthContextProvider'
+import { useNavigate,Link } from "react-router-dom";
+import { AuthContext } from '../../Contexts/AuthContextProvider'
+import { FaLongArrowAltRight } from "react-icons/fa";
 
 export default function SignUp() {
   const {setUserId,setUserFirstName} = useContext(AuthContext);
+  const navigate = useNavigate();
 
   let initialForm = {
     firstName: "",
@@ -35,11 +37,12 @@ export default function SignUp() {
       let data = await response.json();
       if (data.Success) {
         console.log(data);
-        //redirect to home page
-        //Navigate('./Home');
         setUserId(data.userId);
         setUserFirstName(data.name);
         localStorage.setItem("token", JSON.stringify(data.Token));
+                //redirect to home page
+        //Navigate('./Home');
+        navigate('/');
       } else setForm(initialForm);
     } else setForm(initialForm);
   };
@@ -48,7 +51,7 @@ export default function SignUp() {
       <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
         <form
           onSubmit={handleSubmit}
-          className="bg-white p-8 rounded-lg shadow-md w-full max-w-md flex flex-col gap-4"
+          className="bg-white p-8 rounded-lg shadow-md w-full max-w-md flex flex-col gap-4 relative"
         >
           <h2 className="text-2xl font-bold text-center mb-4 cursor-default">Sign Up</h2>
           <input
@@ -106,12 +109,18 @@ export default function SignUp() {
           />
           <button
             type="submit"
-            className="p-3 rounded bg-blue-600 text-white font-semibold hover:bg-blue-700 transition"
+            className="p-3 mb-8 mt-4 rounded bg-blue-600 text-white font-semibold hover:bg-blue-700 transition"
           >
             Sign Up
           </button>
+                <Link to='/signin' className='float-right text-blue-600 hover:text-blue-800 absolute right-3 bottom-2'>
+                Sign In 
+                </Link>
         </form>
       </div>
     </>
   );
 }
+
+
+{/* <FaLongArrowAltRight className="inline-block"/> */}
