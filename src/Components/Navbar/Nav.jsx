@@ -1,7 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { FaUserCircle } from "react-icons/fa";
-import { ThemeContext } from "../../Common/FilePaths";
+import { ThemeContext,UserIconBtn} from "../../Common/FilePaths";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 import { THEME_DARK, THEME_LIGHT } from "../../Common/Constants";
 
@@ -9,7 +8,7 @@ export default function Nav() {
   const { theme, setTheme } = useContext(ThemeContext);
 
   return (
-    <nav className={`h-full w-full flex justify-between items-center ${(theme==THEME_LIGHT)?'bg-gray-100':'dark-bg'}`}>
+    <nav className={`h-full w-full flex justify-between items-center ${(theme == THEME_LIGHT) ? 'light' : 'dark'}`}>
       <div className="drivex ml-5">
         <Link to="/" className="text-3xl">
           DriveX
@@ -18,7 +17,7 @@ export default function Nav() {
       <div className="mr-5">
         <ul className="flex flex-row-reverse items-center gap-5">
           <li>
-            <FaUserCircle size={30} color="rgba(7, 33, 172, 0.66)" />
+            <UserIconBtn theme={theme}/>
           </li>
           <li>
             <span
@@ -29,9 +28,9 @@ export default function Nav() {
               }}
             >
               {theme == THEME_DARK ? (
-                <MdLightMode size={30} color="rgba(7, 33, 172, 0.66)"/>
+                <MdLightMode size={30} color="whitesmoke" />
               ) : (
-                <MdDarkMode size={30} color="#4d4949"/>
+                <MdDarkMode size={30} color="#4d4949" />
               )}
             </span>
           </li>

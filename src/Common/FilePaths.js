@@ -9,4 +9,9 @@ export {AuthContext,AuthContextProvider,} from "../Contexts/AuthContextProvider.
 export {useAuth} from '../CustomHooks/useAuth.js'
 export {default as Nav} from '../Components/Navbar/Nav.jsx'
 export {ThemeContext, ThemeContextProvider} from '../Contexts/ThemeContextProvider.jsx'
-
+export {default as UserInfoCard} from '../Components/Navbar/UserInfoCard.jsx'
+export {default as UserIconBtn} from '../Components/Navbar/UserIconBtn.jsx'
+export {default as UseClickOutSideHide} from '../CustomHooks/UseClickOutSideHide.jsx'
+export {default as Side} from '../Components/Sidebar/Side.jsx'
+export {default as NewOptions} from '../Components/Sidebar/NewOptions.jsx'
+export {default as NewBtn} from '../Components/Sidebar/NewBtn.jsx'

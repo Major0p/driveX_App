@@ -1,18 +1,54 @@
 @import "tailwindcss";
 
-.drivex{
-     background: linear-gradient(to right, #2f0396, #1759e6, #44cdef); /* purple → pink → red */
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text; /* For Firefox */
-      color: transparent;
+.drivex {
+  background: linear-gradient(
+    to right,
+    #8867d4,
+    #1759e6,
+    #44cdef
+  ); /* purple → pink → red */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text; /* For Firefox */
+  color: transparent;
 }
 
-.dark-text{
-      color: white;
+.dark {
+  color: whitesmoke;
+  background-color: #1e2939;
 }
 
-.dark-bg{
-      background-color: black;
+.light {
+  color: black;
+  background-color: #f3f4f6;
 }
 
+.dark-dlg{
+  color: whitesmoke;
+  background-color: #282a2d;
+}
+
+.light-dlg{
+  color: black;
+  background-color: #e5e7eb;
+}
+
+.dark-dlg-item{
+  color: whitesmoke;
+  background-color: #1e2939;
+}
+
+.dark-dlg-item:hover{
+  color: whitesmoke;
+  background-color: #6b6e76;
+}
+
+.light-dlg-item{
+  color: #282a2d;
+  background-color: white;
+}
+
+.light-dlg-item:hover{
+  color: #282a2d;
+  background-color: #d5ddea;
+}
