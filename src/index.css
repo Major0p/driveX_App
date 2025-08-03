@@ -13,6 +13,16 @@
   color: transparent;
 }
 
+.dark-main {
+  color: whitesmoke;
+  background-color: #37414f;
+}
+
+.light-main {
+  color: black;
+  background-color: white;
+}
+
 .dark {
   color: whitesmoke;
   background-color: #1e2939;

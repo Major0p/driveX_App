@@ -4,7 +4,7 @@ import { ImUser } from "react-icons/im";
 import { PiSignOutBold } from "react-icons/pi";
 import { MdOutlineWbCloudy } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../Common/FilePaths";
+import { AuthContext,UseClickOutSideClose } from "../../Common/FilePaths";
 import { THEME_LIGHT } from "../../Common/Constants";
 
 export default function UserInfoCard({isOpen,closeDlg,theme}) {
@@ -14,6 +14,7 @@ export default function UserInfoCard({isOpen,closeDlg,theme}) {
 
   const { userId, setUserId, setUserFirstName, userFirstName } = useContext(AuthContext);
   const navigate = useNavigate();
+    const newOptnDlgRef = UseClickOutSideClose(()=>closeDlg());
 
   const SignOut = () => {
     setUserId("");
@@ -24,7 +25,7 @@ export default function UserInfoCard({isOpen,closeDlg,theme}) {
    
   return (
     <>
-      <div className={`absolute top-[60px] right-[20px] w-[350px] rounded-xl shadow-md p-4 select-none border-1 border-gray-300 ${(theme == THEME_LIGHT)?'light-dlg':'dark-dlg'}`}>
+      <div ref={newOptnDlgRef} className={`absolute top-[60px] right-[20px] w-[350px] rounded-xl shadow-md p-4 select-none border-1 border-gray-300 ${(theme == THEME_LIGHT)?'light-dlg':'dark-dlg'}`}>
         <div className="text-center mb-6 relative">
           <div className="font-semibold cursor-default">{userId}</div>
           <span onClick={closeDlg} className="absolute top-0 right-0">

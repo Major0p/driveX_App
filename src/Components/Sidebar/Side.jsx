@@ -11,8 +11,8 @@ export default function Side() {
     const { theme } = useContext(ThemeContext);
 
     return (
-        <div className={`h-full w-full flex flex-col justify-between ${(theme == THEME_LIGHT) ? 'light' : 'dark'} p-5 select-none`}>
-            <NewBtn theme={theme} />
+        <div className={`h-full w-full ${(theme == THEME_LIGHT) ? 'light' : 'dark'} p-5 select-none`}>
+            <NewBtn/>
             <Link to='/'>
                 <div className={`${(theme == THEME_LIGHT) ? ' hover:bg-gray-200' : 'dark-dlg-item'} mt-5 rounded-xl p-2 `}>
                     <span><IoMdHome size={20} className='inline' /></span>
