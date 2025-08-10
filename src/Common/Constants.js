@@ -1,2 +1,3 @@
 export const THEME_LIGHT = 'light';
 export const THEME_DARK = 'dark';
+export const FILE_ROOT_ID = 'HOME';

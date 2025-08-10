@@ -17,10 +17,10 @@ export default function Nav() {
       <div className="mr-5">
         <ul className="flex flex-row-reverse items-center gap-5">
           <li>
-            <UserIconBtn theme={theme}/>
+            <UserIconBtn/>
           </li>
           <li>
-            <span
+            <span className="hidden"
               onClick={() => {
                 theme == THEME_DARK
                   ? setTheme(THEME_LIGHT)

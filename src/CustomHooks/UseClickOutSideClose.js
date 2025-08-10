@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 
-export default function UseClickOutSideClose(close) {
+export default function useClickOutSideClose(close) {
     const ref = useRef(null);
 
     useEffect(()=>{

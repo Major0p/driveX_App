@@ -13,7 +13,7 @@ export default function Side() {
     return (
         <div className={`h-full w-full ${(theme == THEME_LIGHT) ? 'light' : 'dark'} p-5 select-none`}>
             <NewBtn/>
-            <Link to='/'>
+            <Link to='/Home'>
                 <div className={`${(theme == THEME_LIGHT) ? ' hover:bg-gray-200' : 'dark-dlg-item'} mt-5 rounded-xl p-2 `}>
                     <span><IoMdHome size={20} className='inline' /></span>
                     <span className='font-semibold ml-4'>Home</span>

@@ -14,6 +14,7 @@ export default function CreateNewFolderDlg({ isOpen, ok, cancel }) {
   useEffect(() => {
     if (isOpen && inputRef.current) {
       inputRef.current.focus();
+      inputRef.current.select();
     }
   }, [isOpen]);
 

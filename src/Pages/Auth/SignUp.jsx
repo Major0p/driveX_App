@@ -1,7 +1,8 @@
 import React, { useContext, useState } from "react";
 import { API_URLS } from "../../API/URLs";
 import { useNavigate,Link } from "react-router-dom";
-import { AuthContext } from '../../Contexts/AuthContextProvider'
+import {SetTokenToLocalStorage} from '../../Common/Utils'
+import { AuthContext } from '../../Common/FilePaths'
 import { FaLongArrowAltRight } from "react-icons/fa";
 
 export default function SignUp() {
@@ -39,10 +40,9 @@ export default function SignUp() {
         console.log(data);
         setUserId(data.userId);
         setUserFirstName(data.name);
-        localStorage.setItem("token", JSON.stringify(data.Token));
-                //redirect to home page
-        //Navigate('./Home');
-        navigate('/');
+        SetTokenToLocalStorage(data.Token);
+        //redirect to home page
+        navigate('/Home');
       } else setForm(initialForm);
     } else setForm(initialForm);
   };

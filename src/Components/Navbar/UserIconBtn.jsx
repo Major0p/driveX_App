@@ -1,25 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState,useContext } from 'react'
 import { FaUserCircle } from "react-icons/fa";
 import { THEME_LIGHT } from "../../Common/Constants";
-import { UserInfoCard} from "../../Common/FilePaths";
+import { UserInfoCard,ThemeContext} from "../../Common/FilePaths";
 
-export default function UserIconBtn({ theme }) {
+export default function UserIconBtn() {
     const [userInfoVsblty, setUserInfoVsblty] = useState(false);
-
-    const toggleUserInfo = () => {
-        setUserInfoVsblty(!userInfoVsblty);
-    };
-
-    const closeUserInfoCard = () => {
-        setUserInfoVsblty(false);
-    };
+    const {theme} = useContext(ThemeContext);
 
     return (
         <>
-            <span onClick={toggleUserInfo} className="relative">
+            <span onClick={setUserInfoVsblty(!userInfoVsblty)} className="relative">
                 <FaUserCircle size={30} color={`${(theme == THEME_LIGHT) ? "#4d4949" : "whitesmoke"}`} />
             </span>
-            <UserInfoCard isOpen={userInfoVsblty} closeDlg={closeUserInfoCard} theme={theme}/>
+            <UserInfoCard isOpen={userInfoVsblty} closeDlg={()=>setUserInfoVsblty(false)}/>
         </>
     )
 }

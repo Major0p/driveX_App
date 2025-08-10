@@ -1,22 +1,12 @@
-import {
-  Routes,
-  Route,
-  createBrowserRouter,
-  createRoutesFromElements,
-} from "react-router-dom";
-import {
-  Layout,
-  AccountAccess,
-  NotFound,
-  SignIn,
-  SignUp,
-} from "./Common/FilePaths";
+import {Route,createBrowserRouter,createRoutesFromElements,} from "react-router-dom";
+import {Layout,AccountAccess,NotFound,SignIn,SignUp,Home} from "./Common/FilePaths";
 
-export const AppRoutes = createBrowserRouter(
+const AppRoutes = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<Layout />}>
         {/* all the things you want to render in your content area */}
+        <Route path="home" element={<Home/>}/>
       </Route>
       <Route path="/accountaccess" element={<AccountAccess />} />
       <Route path="/signup" element={<SignUp />} />
@@ -25,3 +15,4 @@ export const AppRoutes = createBrowserRouter(
     </>
   )
 );
+export default AppRoutes;

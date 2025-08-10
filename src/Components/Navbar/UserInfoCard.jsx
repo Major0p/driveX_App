@@ -4,17 +4,18 @@ import { ImUser } from "react-icons/im";
 import { PiSignOutBold } from "react-icons/pi";
 import { MdOutlineWbCloudy } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-import { AuthContext,UseClickOutSideClose } from "../../Common/FilePaths";
+import { AuthContext,ThemeContext,useClickOutSideClose } from "../../Common/FilePaths";
 import { THEME_LIGHT } from "../../Common/Constants";
 
-export default function UserInfoCard({isOpen,closeDlg,theme}) {
-
+export default function UserInfoCard({isOpen,closeDlg}) {
+  
   if(!isOpen)
     return null;
 
   const { userId, setUserId, setUserFirstName, userFirstName } = useContext(AuthContext);
+  const newOptnDlgRef = useClickOutSideClose(()=>closeDlg());
   const navigate = useNavigate();
-    const newOptnDlgRef = UseClickOutSideClose(()=>closeDlg());
+  const {theme} = useContext(ThemeContext);
 
   const SignOut = () => {
     setUserId("");
