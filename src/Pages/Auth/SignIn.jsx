@@ -1,7 +1,7 @@
 import React,{useContext, useState} from "react";
 import {API_URLS} from '../../API/URLs';
 import {AuthContext} from '../../Common/FilePaths'
-import {SetTokenToLocalStorage} from '../../Common/Utils'
+import {RefreshToken} from '../../Common/Utils'
 import { useNavigate,Link } from "react-router-dom";
 import { FaLongArrowAltRight } from "react-icons/fa";
 
@@ -35,10 +35,8 @@ export default function SignIn() {
       let data = await response.json();
       if(data.Success)
       {
-        console.log(data);
         setUserId(data.userId);
         setUserFirstName(data.name);
-        SetTokenToLocalStorage(data.Token);
         //redirect to home page
         navigate('/Home');
       }

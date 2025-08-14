@@ -24,7 +24,7 @@ export default function CreateNewFolderDlg({ isOpen, ok, cancel }) {
         <h1 className='text-2xl font-bold'>New Folder</h1>
         <input ref={inputRef} type="text" value={inptVal} onChange={(e) => setInptVal(e.target.value)} className='w-full text-xl my-5 p-3 rounded-2xl border border-solid border-blue-900 hover:border-blue-500' placeholder='Folder Name' />
         <button type='button' onClick={() => ok(inptVal)} className='p-2 hover:text-blue-700 float-right'>Create</button>
-        <button type='button' onClick={()=>cancel()} className='p-2 hover:text-blue-700 float-right mr-3'>Cancel</button>
+        <button type='button' onClick={cancel} className='p-2 hover:text-blue-700 float-right mr-3'>Cancel</button>
       </div>
     </div>
   )

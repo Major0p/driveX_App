@@ -37,10 +37,8 @@ export default function SignUp() {
     if (response.ok) {
       let data = await response.json();
       if (data.Success) {
-        console.log(data);
         setUserId(data.userId);
         setUserFirstName(data.name);
-        SetTokenToLocalStorage(data.Token);
         //redirect to home page
         navigate('/Home');
       } else setForm(initialForm);

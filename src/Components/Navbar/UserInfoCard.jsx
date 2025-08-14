@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext} from "react";
 import { IoClose } from "react-icons/io5";
 import { ImUser } from "react-icons/im";
 import { PiSignOutBold } from "react-icons/pi";
@@ -9,13 +9,13 @@ import { THEME_LIGHT } from "../../Common/Constants";
 
 export default function UserInfoCard({isOpen,closeDlg}) {
   
-  if(!isOpen)
-    return null;
-
   const { userId, setUserId, setUserFirstName, userFirstName } = useContext(AuthContext);
-  const newOptnDlgRef = useClickOutSideClose(()=>closeDlg());
+  const newOptnDlgRef = useClickOutSideClose(closeDlg);
   const navigate = useNavigate();
   const {theme} = useContext(ThemeContext);
+
+  if(!isOpen)
+    return null;
 
   const SignOut = () => {
     setUserId("");

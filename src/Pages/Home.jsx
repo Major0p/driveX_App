@@ -29,9 +29,3 @@ export default function Home() {
   )
 }
 
-
-async function GetFilesFolders(userId,parentId) {
-  let rul = encodeURIComponent();
-  await fetch(url,reqObj);
-}
-

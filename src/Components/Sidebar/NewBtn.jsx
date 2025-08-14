@@ -12,8 +12,6 @@ export default function NewBtn() {
     const [createFolderIsOpen, setCreateFolderIsOpen] = useState(false);
     const [files, setFiles] = useState(null);
 
-    useEffect(()=>{},[upldDlgIsVsbl]);
-
     const createFolderOkCallback = async (folderName) => {
         setCreateFolderIsOpen(false);
         const res = await createFolderRequest(API_URLS.CREATEFOLDER,userId,folderName,"HOME");
@@ -30,9 +28,9 @@ export default function NewBtn() {
             <div onClick={()=>setUpldDlgIsVsbl(true)} className={`${(theme == THEME_LIGHT) ? ' hover:bg-gray-200' : 'dark-dlg-item'} w-35 p-5 shadow-lg rounded-3xl relative`}>
                 <span className=''><FaPlus size={30} className='inline' /></span>
                 <span className='text-xl font-semibold ml-4'>New</span>
-                <NewOptions isOpen={upldDlgIsVsbl} closeDlg={()=>setUpldDlgIsVsbl(false)} openCreateFolder={()=>setCreateFolderIsOpen(true)} onFileInptChange={onFileInptChange}/>
+                <NewOptions isOpen={upldDlgIsVsbl} closeDlg={()=>setUpldDlgIsVsbl(false)} openCreateFolder={()=>setCreateFolderIsOpen(true)} onFileInptChange={()=>onFileInptChange}/>
             </div>
-            <CreateNewFolderDlg isOpen={createFolderIsOpen} ok={createFolderOkCallback} cancel={()=>setCreateFolderIsOpen(false)} />
+            <CreateNewFolderDlg isOpen={createFolderIsOpen} ok={()=>createFolderOkCallback} cancel={()=>setCreateFolderIsOpen(false)} />
         </>
     )
 }

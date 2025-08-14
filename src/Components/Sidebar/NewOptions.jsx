@@ -4,13 +4,13 @@ import { THEME_LIGHT } from '../../Common/Constants';
 import { ThemeContext,useClickOutSideClose } from '../../Common/FilePaths'
 
 export default function NewOptions({ isOpen, closeDlg,openCreateFolder,onFileInptChange }) {
-    if (!isOpen)
-        return null;
-    
-    const newOptnDlgRef = useClickOutSideClose(()=>closeDlg());
+    const newOptnDlgRef = useClickOutSideClose(closeDlg);
     const { theme } = useContext(ThemeContext);
     const fileInput = useRef(null);
     
+     if (!isOpen)
+         return null;
+       
     const createFolderClk = (e)=>{
         e.preventDefault();
         closeDlg();

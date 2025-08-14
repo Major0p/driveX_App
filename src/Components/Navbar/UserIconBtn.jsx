@@ -9,10 +9,11 @@ export default function UserIconBtn() {
 
     return (
         <>
-            <span onClick={setUserInfoVsblty(!userInfoVsblty)} className="relative">
+            <span onClick={()=>setUserInfoVsblty(!userInfoVsblty)} className="">
                 <FaUserCircle size={30} color={`${(theme == THEME_LIGHT) ? "#4d4949" : "whitesmoke"}`} />
             </span>
             <UserInfoCard isOpen={userInfoVsblty} closeDlg={()=>setUserInfoVsblty(false)}/>
         </>
     )
 }
+
