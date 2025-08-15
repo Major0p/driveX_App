@@ -20,3 +20,4 @@ export {default as CreateNewFolderDlg} from '../Components/Sidebar/CreateNewFold
 export {default as useClickOutSideClose} from '../CustomHooks/useClickOutSideClose.js'
 export {default as FolderCard} from '../Components/FolderComps/FolderCard.jsx'
 export {default as Home} from '../Pages/Home.jsx'
+export {default as DriveXLoading} from '../Components/DriveXLoading.jsx'

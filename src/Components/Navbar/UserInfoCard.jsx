@@ -6,6 +6,7 @@ import { MdOutlineWbCloudy } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { AuthContext,ThemeContext,useClickOutSideClose } from "../../Common/FilePaths";
 import { THEME_LIGHT } from "../../Common/Constants";
+import {ClearTokens} from '../../Common/Utils'
 
 export default function UserInfoCard({isOpen,closeDlg}) {
   
@@ -20,7 +21,7 @@ export default function UserInfoCard({isOpen,closeDlg}) {
   const SignOut = () => {
     setUserId("");
     setUserFirstName("");
-    localStorage.removeItem("token");
+    ClearTokens();
     navigate('/accountaccess');
   };
    

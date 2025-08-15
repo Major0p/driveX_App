@@ -62,3 +62,16 @@
   color: #282a2d;
   background-color: #d5ddea;
 }
+
+@keyframes fadeInOut {
+  0%,100%{
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.75;
+  }
+}
+
+.animate-fade {
+  animation: fadeInOut 2s ease-in-out infinite;
+}

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { API_URLS } from "../../API/URLs";
 import { useNavigate,Link } from "react-router-dom";
-import {SetTokenToLocalStorage} from '../../Common/Utils'
+import {SetSessionTokenToLocalStorage,SetAccessTokenToLocalStorage} from '../../Common/Utils'
 import { AuthContext } from '../../Common/FilePaths'
 import { FaLongArrowAltRight } from "react-icons/fa";
 
@@ -35,10 +35,12 @@ export default function SignUp() {
     });
 
     if (response.ok) {
-      let data = await response.json();
-      if (data.Success) {
-        setUserId(data.userId);
-        setUserFirstName(data.name);
+      let result = await response.json();
+      if (result.Success) {
+        setUserId(result.Data.UserId);
+        setUserFirstName(result.Data.Name);
+        SetSessionTokenToLocalStorage(result.Token.SessionToken);
+        SetAccessTokenToLocalStorage(result.Token.AccessToken);
         //redirect to home page
         navigate('/Home');
       } else setForm(initialForm);

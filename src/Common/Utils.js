@@ -18,18 +18,32 @@ export function GetSessionTokenFromLocalStorage()
     return localStorage.getItem("driveX_sessionToken");
 };
 
+export function ClearTokens()
+{
+    localStorage.removeItem("driveX_sessionToken");
+    localStorage.removeItem("driveX_accesToken");
+}
+
 export async function RefreshToken(url,userId)
 {
     url += '?userId='+userId;
-    const res = await fetch(url);
+    const sessionToken = GetSessionTokenFromLocalStorage();
+    const reqObj = {
+        method:'GET',
+        headers:{
+            'Authorization': `Bearer ${sessionToken}`
+        }
+    };
+
+    const res = await fetch(url,reqObj);
 
     if(!res.ok)
         return false;//redirect to log in
 
-    const data = await res.json();
+    const result = await res.json();
 
-    SetAccessTokenToLocalStorage(data.accessToken);
-    SetSessionTokenToLocalStorage(data.sessionToken);
+    SetAccessTokenToLocalStorage(result.Token.AccessToken);
+    SetSessionTokenToLocalStorage(result.Token.SessionToken);
 
     return true;
 };

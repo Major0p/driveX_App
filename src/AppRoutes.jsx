@@ -6,11 +6,11 @@ const AppRoutes = createBrowserRouter(
     <>
       <Route path="/" element={<Layout />}>
         {/* all the things you want to render in your content area */}
-        <Route path="home" element={<Home/>}/>
+        <Route path="home" element={<Home />} />
       </Route>
       <Route path="/accountaccess" element={<AccountAccess />} />
-      <Route path="/signup" element={<SignUp />} />
-      <Route path="/signin" element={<SignIn />} />
+      <Route path="signin" element={<SignIn />} />
+      <Route path="signup" element={<SignUp />} />
       <Route path="*" element={<NotFound />} />
     </>
   )

@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { THEME_LIGHT } from '../../Common/Constants'
-import {GetTokenFromLocalStorage} from '../../Common/Utils'
+import {GetAccessTokenToLocalStorage} from '../../Common/Utils'
 import { NewOptions, ThemeContext, CreateNewFolderDlg,AuthContext } from '../../Common/FilePaths'
 import {API_URLS} from '../../API/URLs'
 import { FaPlus } from "react-icons/fa6";
@@ -37,7 +37,7 @@ export default function NewBtn() {
 
 
 async function createFolderRequest(url, userId, folderName, parentId) {
-    let token = GetTokenFromLocalStorage();
+    let token = GetAccessTokenToLocalStorage();
     let reqObj = {
         method: "POST",
         headers: {
