@@ -1,3 +1,5 @@
+import {API_URLS} from '../API/URLs'
+
 export function SetAccessTokenToLocalStorage(token)
 {
     localStorage.setItem("driveX_accesToken",token);
@@ -23,28 +25,4 @@ export function ClearTokens()
     localStorage.removeItem("driveX_sessionToken");
     localStorage.removeItem("driveX_accesToken");
 }
-
-export async function RefreshToken(url,userId)
-{
-    url += '?userId='+userId;
-    const sessionToken = GetSessionTokenFromLocalStorage();
-    const reqObj = {
-        method:'GET',
-        headers:{
-            'Authorization': `Bearer ${sessionToken}`
-        }
-    };
-
-    const res = await fetch(url,reqObj);
-
-    if(!res.ok)
-        return false;//redirect to log in
-
-    const result = await res.json();
-
-    SetAccessTokenToLocalStorage(result.Token.AccessToken);
-    SetSessionTokenToLocalStorage(result.Token.SessionToken);
-
-    return true;
-};
 

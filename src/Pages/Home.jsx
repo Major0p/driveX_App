@@ -1,30 +1,42 @@
 import React, { useContext, useEffect, useState } from 'react'
-import {ThemeContext,FolderCard} from '../Common/FilePaths'
-import {} from '../Common/Constants'
-import {API_URLS} from '../API/URLs'
+import { ThemeContext,AuthContext,FoldersContainer,FilesContainer } from '../Common/FilePaths'
+import { } from '../Common/Constants'
+import { GetFilesFoldersByParentId } from '../API/CommonRequests'
 
 export default function Home() {
-  const [folderList,setFolderList] = useState([]);
-  const [fileList,setFileList] = useState([]);
-  const {theme} = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
+  const { userId } = useContext(AuthContext);
+  const [folderList, setFolderList] = useState([]);
+  const [fileList, setFileList] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const result = await GetFilesFoldersByParentId(userId, "HOME");
+      if (result) {
+        let resultArr = Array.from(result);
+        let files = [];
+        let folders = [];
+        resultArr.map(item => {
+          if (item) {
+            if (item.IsFile)
+              files.push(item);
+            else
+              folders.push(item);
+          }
+        });
+        setFileList([...files]);
+        setFolderList([...folders]);
+      }
+    })();
+  }, []);
 
   return (
     <>
       {/* toolbar */}
       {/* folder section */}
-      <div className="mt-5">
-        <h3 className="light w-[110px] text-xl font-semibold px-3 py-2 m-5 rounded-2xl">Folders</h3>
-        <div className='flex gap-4'>
-        
-        </div>
-      </div>
+      <FoldersContainer folderList={folderList}/>
       {/* file section */}
-      <div className="mt-5">
-        <h3 className="light w-[80px] text-xl font-semibold px-3 py-2 m-5 rounded-2xl">Files</h3>
-        <div>
-         
-        </div>
-      </div>
+      <FilesContainer fileList={fileList}/>
     </>
   )
 }

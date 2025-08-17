@@ -2,35 +2,17 @@ import React, { useContext, useEffect, useState } from "react";
 import { Outlet,useNavigate } from "react-router-dom";
 import { Nav, Side,ThemeContext,AuthContext,DriveXLoading } from '../Common/FilePaths'
 import {THEME_LIGHT} from '../Common/Constants'
-import { GetSessionTokenFromLocalStorage, RefreshToken } from "../Common/Utils";
-import {API_URLS} from '../API/URLs'
+import {IsLogedIn} from '../API/CommonRequests'
 
 export default function Layout() {
   const {theme} = useContext(ThemeContext);
   const navigate = useNavigate();
-  const [valid,setValid] = useState(true);
+  const [valid,setValid] = useState(false);
 
   useEffect(() => {
-    (async () => {
-      try {
-        let url = API_URLS.ISLOGEDIN;
-        const sessionToken = GetSessionTokenFromLocalStorage();
-        let objReq = {
-          method:"GET",
-          headers:{
-            'Authorization': `Bearer ${sessionToken}`
-          }
-        };
-        let res = await fetch(url,objReq);
-
-        if (res.ok)
-          res = await res.json();
-
-        (res.data == 1) ? setValid(true) : navigate('/accountaccess');
-      }
-      catch (ex) {
-        console.log(ex);
-      }
+    (async ()=> {
+      let res = await IsLogedIn();
+      (res)?setValid(true):navigate('/accountaccess');
     })();
   }, []);
 

@@ -63,12 +63,32 @@
   background-color: #d5ddea;
 }
 
+.dark-folder-card{
+  color: whitesmoke;
+  background-color: #1e2939;
+}
+
+.dark-folder-card:hover{
+  color: whitesmoke;
+  background-color: #6b6e76;
+}
+
+.light-folder-card{
+  color: #282a2d;
+  background-color: #eaeaea;
+}
+
+.light-folder-card:hover{
+  color: #282a2d;
+  background-color: #d5ddea;
+}
+
 @keyframes fadeInOut {
   0%,100%{
     opacity: 1;
   }
   50% {
-    opacity: 0.75;
+    opacity: 0.5;
   }
 }
 

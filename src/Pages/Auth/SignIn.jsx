@@ -20,33 +20,36 @@ export default function SignIn() {
   }
 
   async function handleSubmit(e) {
-    e.preventDefault();
+    try {
+      e.preventDefault();
 
-    let response = await fetch(API_URLS.LOGIN,{
-      method:"POST",
-      body: JSON.stringify(form),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    });
+      let response = await fetch(API_URLS.LOGIN, {
+        method: "POST",
+        body: JSON.stringify(form),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
 
-    if(response.ok) 
-    {
-      let result = await response.json();
-      if(result.Success)
-      {
-        setUserId(result.Data.UserId);
-        setUserFirstName(result.Data.Name);
-        SetSessionTokenToLocalStorage(result.Token.SessionToken);
-        SetAccessTokenToLocalStorage(result.Token.AccessToken);
-        //redirect to home page
-        navigate('/Home');
+      if (response.ok) {
+        let result = await response.json();
+        if (result.Success) {
+          setUserId(result.Data.UserId);
+          setUserFirstName(result.Data.Name);
+          SetSessionTokenToLocalStorage(result.Token.SessionToken);
+          SetAccessTokenToLocalStorage(result.Token.AccessToken);
+          //redirect to home page
+          navigate('/');
+        }
+        else
+          setForm(initialForm);
       }
-      else 
+      else
         setForm(initialForm);
     }
-    else 
-      setForm(initialForm);
+    catch (ex) {
+      console.error(ex.message);
+    }
   }
 
   return (

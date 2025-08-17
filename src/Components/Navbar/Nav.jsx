@@ -10,7 +10,7 @@ export default function Nav() {
   return (
     <div className={`h-full w-full flex justify-between items-center ${(theme == THEME_LIGHT) ? 'light' : 'dark'}`}>
       <div className="drivex ml-5">
-        <Link to="/" className="text-3xl">
+        <Link to="/home" className="text-3xl">
           DriveX
         </Link>
       </div>

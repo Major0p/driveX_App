@@ -6,7 +6,7 @@ const AppRoutes = createBrowserRouter(
     <>
       <Route path="/" element={<Layout />}>
         {/* all the things you want to render in your content area */}
-        <Route path="home" element={<Home />} />
+        <Route path="" element={<Home />} />
       </Route>
       <Route path="/accountaccess" element={<AccountAccess />} />
       <Route path="signin" element={<SignIn />} />

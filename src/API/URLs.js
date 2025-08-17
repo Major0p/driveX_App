@@ -7,6 +7,6 @@ export const API_URLS={
     ISLOGEDIN : API_BASE_URL + 'user/IsLogedIn',
     CREATEFOLDER : API_BASE_URL + 'File/CreateFolder',
     UPLOADFILE : API_BASE_URL + 'file/savefile',
-    GETFILES_FOLDERS : API_BASE_URL + 'file/getfiles_foders'
+    GETFILES_FOLDERS_BY_PAREBT_ID : API_BASE_URL + 'file/GetFilesFoldersByParentId'
 }
 
