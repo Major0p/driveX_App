@@ -144,3 +144,41 @@ export async function createNewFolder(folderName,parentId)
         return null;
     }
 }
+
+//hey i created this common method to handle the 401 response 
+export async function RequestHandler (userId,url,reqObj)
+{
+    try
+    {
+        let response = await fetch( url, reqObj );
+
+        if ( response.status == 401 )
+        {
+            let isTokenRefreshed = await RefreshToken( userId );
+
+            if ( isTokenRefreshed )
+            {
+                let accessToken = GetAccessTokenToLocalStorage();
+                let newReqObj = {
+                    ...reqObj,
+                    headers: {
+                        ...reqObj.headers,
+                        Authorization : `Bearer ${ accessToken }`
+                    }
+                };
+                response = await fetch( url, newReqObj );
+            }
+        }
+
+        if ( response.ok )
+            return await response.json();
+
+        console.log( response.text );
+        return null;
+    }
+    catch (ex)
+    {
+        console.error( ex.message );
+        return null;
+    }
+}
